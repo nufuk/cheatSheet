@@ -1,0 +1,92 @@
+GIT Cheat Sheet
+
+Working Directory	->	Staging Area	->	Repository
+Dateien bearbeiten		Änderungen in		Änderungen permanent
+hinzufügen				diesen Bereich 		speichern
+löschen					bringen
+
+Workflow lautet:
+Dateien bearbeiten, in die Staging Area bringen und dann im Repository speichern
+
+Git repository initialisieren: 
+git init
+
+Status abfrage:
+git status
+
+Datei zum repo hinzufügen:
+git add <filename>
+git add '*.*'
+
+Änderungen commiten (staging, also markieren als "ready")
+git commit -m "<Kommentar>"
+
+Log einsehen
+git log
+
+remote Repo hinzufügen
+git remote add origin https://github.com/nufuk/*.git
+
+Code ins Repo hochladen (-u merkt sich die folgenden parameter, danach nur noch git push)
+git push -u origin master
+
+Code repo auf änderungen prüfen
+git pull origin master
+
+Änderungen checken
+git diff HEAD
+git diff --staged (nur die Änderungen die "ready" sind anzeigen)
+
+unstagen von Dateien
+git reset <file>
+git reset <erste_7_digits vom Sha code> (git log zeigt die ganzen Änderungen und Sha codes)
+
+Datei reversen
+git checkout -- <target>
+
+Branch erstellen:
+git branch <name>
+
+Branch wechseln:
+git checkout <branchname>
+
+Branches anzeigen:
+git branch (* zeigt aktuellen Branch an)
+
+Branch löschen:
+git branch -d <branchname>
+
+Dateien von der Platte und dem Repo löschen:
+git rm <file>
+git rm '*<file>'
+
+Branch in den Master mergen:
+git merge <branchname>
+
+Default stage in git is HEAD
+git show HEAD
+git checkout HEAD <filename> (restored die letzte Version aus der Stage, verwirft also Änderungen)
+
+Resolvin Konflikte
+Zur Markierten Stelle gehen
+die bevorzugte Version auswählen und die andere löschen
+git special markings löschen (<<<<<<>>>>>===== HEAD, <branchname>)
+git add <filename>
+git commit -m "Kommentar"
+
+Repository auf die lokale platte ziehen
+git clone <remote_location> <clone_name>
+<remote_locaiton> kann ein lokaler Ordner oder eine Webadresse sein
+<clone_name> in das der klon kopiert werden soll.
+
+Git Projekte anzeigen
+git remote -v
+
+Remote Änderungen lokal ziehen (ohne ins lokale projekt zu mergen)
+git fetch
+(mit git-merge origin/master werden die änderungen lokal wirksam)
+(- Fetch and merge changes from the remote
+- Create a branch to work on a new project feature
+- Develop the feature on your branch and commit your work
+- Fetch and merge from the remote again (in case new commits were made while you were working)
+- Push your branch up to the remote for review) [git push origin <branchname>]
